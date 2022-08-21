@@ -65,3 +65,4 @@ C:\Users\mahmoud hossam\source\repos\CollegeSystem\CollegeSystem\bin\Debug\net6.
 C:\Users\mahmoud hossam\source\repos\CollegeSystem\CollegeSystem\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 C:\Users\mahmoud hossam\source\repos\CollegeSystem\CollegeSystem\bin\Debug\net6.0\Newtonsoft.Json.dll
 C:\Users\mahmoud hossam\source\repos\CollegeSystem\CollegeSystem\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
+C:\Users\mahmoud hossam\source\repos\CollegeSystem\CollegeSystem\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using CollegeSystem.Reporisatry;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CollegeSystem.Controllers
 {
@@ -17,7 +18,7 @@ namespace CollegeSystem.Controllers
         {
             _mapper = mapper;
         }
-
+        [Authorize]
         [HttpPost("AddStudent")]
         public IActionResult AddStudent([FromBody] StudentModel studentModel)
         {
@@ -32,6 +33,7 @@ namespace CollegeSystem.Controllers
             DataBaseObject.db.SaveChanges();
             return Ok(new { email = user.email, password = user.password });
         }
+        [Authorize]
         [HttpPost("SearchAboutUserById")]
         public IActionResult SearchAboutUserById(int id)
         {
@@ -40,7 +42,7 @@ namespace CollegeSystem.Controllers
 
             return NotFound("User not found");
         }
-        
+        [Authorize]
         [HttpDelete("DeleteStudent")]
         public IActionResult DeleteStudent(int id)
         {
@@ -50,6 +52,7 @@ namespace CollegeSystem.Controllers
             DataBaseObject.db.SaveChanges();
             return Ok("User has been Deleted");
         }
+        [Authorize]
         [HttpPost("SearchAboutUserByName")]
         public IActionResult SearchAboutUserByName(string name)
         {
@@ -58,6 +61,7 @@ namespace CollegeSystem.Controllers
             return Ok(new { student = user });
 
         }
+        [Authorize]
         [HttpPost("SearchAboutUserByEmail")]
         public IActionResult SearchAboutUserByEmail(string email)
         {
@@ -67,6 +71,7 @@ namespace CollegeSystem.Controllers
             return Ok(new { student = user });
 
         }
+        [Authorize]
         [HttpPost("AddSubjectToStudent")]
         public IActionResult AddSubjectToStudent([FromBody] StudentSubject studentSubject)
         {
@@ -80,6 +85,7 @@ namespace CollegeSystem.Controllers
             DataBaseObject.db.SaveChanges();
             return Ok(new { message = "subject Added" });
         }
+        [Authorize]
         [HttpDelete("DeleteSubjectFromStudent")]
         public IActionResult DeleteSubjectFromStudent(int studentId, int subjectId)
         {

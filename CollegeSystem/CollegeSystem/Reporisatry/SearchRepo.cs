@@ -35,16 +35,20 @@ namespace CollegeSystem.Reporisatry
         }
         public Subject SearchSubjectById(int Id)
         {
-            var subject=DataBaseObject.db.subjects.Find(Id);
+            var subject=DataBaseObject.db.subjects.Include(x=>x.students).Where(x=>x.Id==Id).FirstOrDefault();
             return subject;
         }
         public Subject SearchSubjectByName(string name)
         {
-            var subject = (from data in DataBaseObject.db.subjects
-                           where data.name.ToLower() == name.ToLower()
-                           select data).FirstOrDefault();
+            var subject = DataBaseObject.db.subjects.Include(x => x.students).
+                              Where(x => x.name==name).FirstOrDefault();
             return subject;
         }
-
+        public Student IsUserExits(string email, string password)
+        {
+            var student=DataBaseObject.db.students.Include(x=>x.subjects).
+                            Where(x=>x.email==email && x.password==password).FirstOrDefault();
+            return student;
+        }
     }
 }
