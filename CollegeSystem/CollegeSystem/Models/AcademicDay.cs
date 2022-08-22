@@ -6,6 +6,6 @@
         public int scheduleID { get; set; }
         public string day { get; set; }
         public DateTime date { get; set; }
-        public List<Subject> subjects { get; set; }
+        public List<SubjectDay> subjects { get; set; }
     }
 }

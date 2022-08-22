@@ -12,5 +12,6 @@ namespace CollegeSystem.Models
         public DateTime examDate { get; set; }
         public int term { get; set; }
         public List<StudentSubject>? students { get; set; }
+        public List<SubjectDay> days { get; set; }
     }
 }

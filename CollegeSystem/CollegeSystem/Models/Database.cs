@@ -12,7 +12,7 @@ namespace CollegeSystem.Models
         public DbSet<AcademicDay> days { get; set; }
         public DbSet<Schedule> schedules { get; set; }
         public DbSet<StudentSubject> studentSubjects { get; set; }
-
+        public DbSet<SubjectDay> subjectDay { get;set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -33,6 +33,17 @@ namespace CollegeSystem.Models
                .WithMany(t => t.students)
                .HasForeignKey(pt => pt.subjectID);
 
+            modelBuilder.Entity<SubjectDay>()
+                .HasKey(t => new { t.subjectID, t.dayID });
+            modelBuilder.Entity<SubjectDay>()
+                .HasOne(pt=>pt.Subject)
+                .WithMany(p=>p.days)
+                .HasForeignKey(p=>p.subjectID);
+            modelBuilder.Entity<SubjectDay>()
+                .HasOne(p => p.AcademicDay)
+                .WithMany(p => p.subjects)
+                .HasForeignKey(p => p.dayID);
+            
        
         }
 
